@@ -1,8 +1,3 @@
-/* ==========================================================================
-   STILI PER LA PAGINA DELL'ITEM (LETTERA SINGOLA)
-   ========================================================================== */
-
-/* Contenitore principale di layout flessibile */
 * {
       margin: 0;
       padding: 0;
@@ -66,9 +61,8 @@
   gap: 30px;
 }
 
-/* --- COLONNA SINISTRA: SCHEDA METADATI --- */
 .filter-sidebar {
-  flex: 0 0 350px; /* Larghezza fissa per la scheda tecnica */
+  flex: 0 0 350px; 
   background-color: #e9e3d8;
   padding: 25px;
   border-radius: 6px;
@@ -96,7 +90,6 @@
   border-top: 1px solid #d3c9b8;
 }
 
-/* Gruppi interni di metadati e liste di link */
 .metadata-group p,
 .download-links p,
 .external-links p {
@@ -110,7 +103,6 @@
   color: #2d2d2d;
 }
 
-/* Link all'interno della barra laterale (Vocabolari controllati e Risorse) */
 .filter-sidebar a {
   color: #7a1f1f;
   text-decoration: none;
@@ -125,9 +117,8 @@
 }
 
 
-/* --- COLONNA DESTRA: AREA DEL TESTO DELLA LETTERA --- */
 .content-area {
-  flex: 1; /* Occupa tutto lo spazio rimanente */
+  flex: 1; 
   background: #ffffff;
   padding: 40px;
   border-radius: 6px;
@@ -135,7 +126,6 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
 }
 
-/* Intestazione del testo */
 .letter-header {
   margin-bottom: 30px;
   border-bottom: 2px solid #7a1f1f;
@@ -155,8 +145,6 @@
   font-size: 0.95rem;
 }
 
-/* Corpo del testo (Trascrizione) */
-/* --- COLONNA DESTRA: AREA DEL TESTO DELLA LETTERA --- */
 .content-area {
   flex: 1;
   background: #ffffff;
@@ -166,7 +154,6 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
 }
 
-/* Intestazione del testo */
 .letter-header {
   margin-bottom: 30px;
   border-bottom: 2px solid #7a1f1f;
@@ -186,7 +173,6 @@
   font-size: 0.95rem;
 }
 
-/* Corpo del testo (Trascrizione) */
 .letter-text {
   font-size: 1.15rem;
   line-height: 1.85;
@@ -195,13 +181,11 @@
   color: #2b2b2b;
 }
 
-/* Tutti i paragrafi ora hanno lo stesso peso visivo (NIENTE GRASSETTO sul primo) */
 .letter-text p {
   margin-bottom: 20px;
   text-indent: 20px; 
 }
 
-/* Formattazione dell'incipit (opener, dateline, salute) */
 .letter-text opener {
   display: block;
   margin-bottom: 25px;
@@ -219,41 +203,47 @@
 }
 
 
-/* ==========================================================================
-   EVIDENZIAZIONE DEI FENOMENI TESTUALI (Marcatori TEI/HTML)
-   ========================================================================== */
-
-/* 1. I CONCETTI (<rs type="concept">) -> In Grassetto con linea tratteggiata bordeaux */
-.letter-text rs[type="concept"] {
+.letter-text .concept {
   font-weight: bold;
   color: #7a1f1f;
   border-bottom: 1px dashed #7a1f1f;
   cursor: help;
 }
 
-/* 2. LE PERSONE (<persName>) -> In Grassetto Blu Notte */
-.letter-text persName {
+.letter-text .person-link {
   font-weight: bold;
   color: #1a365d;
   border-bottom: 1px solid transparent;
+  text-decoration: none; 
 }
 
-/* 3. I LUOGHI (<placeName>) -> In Grassetto Verde Oliva Scuro */
-.letter-text placeName {
+.letter-text .place {
   font-weight: bold;
   color: #2f5233;
 }
 
-/* 4. LE DATE E IL TEMPO (<date>, <time>) -> In Grassetto Grigio Antracite */
-.letter-text date,
-.letter-text time {
+.letter-text time,
+.letter-text .dateline time {
   font-weight: bold;
   color: #4a4a4a;
 }
 
 
-/* --- ELEMENTI DI CHIUSURA --- */
-.letter-text closer {
+.letter-text .letter-opener {
+  margin-bottom: 30px;
+}
+
+.letter-text .dateline {
+  margin-bottom: 10px;
+}
+
+.letter-text .letter-opener .salute {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+
+.letter-text .letter-closer {
   display: block;
   margin-top: 40px;
   padding-top: 15px;
@@ -261,18 +251,19 @@
   text-align: right;
 }
 
-.letter-text closer salute {
+.letter-text .letter-closer .salute {
   font-style: italic;
   margin-bottom: 5px;
 }
 
-.letter-text signed persName {
+.letter-text .letter-closer .signed .author-signature {
   font-size: 1.35rem;
-  color: #7a1f1f; /* Risalta la firma dell'autore */
+  font-weight: bold;
+  color: #7a1f1f; 
   border-bottom: none;
 }
 
-.letter-text closer time {
+.letter-text .letter-closer .time-end time {
   display: block;
   font-size: 0.95rem;
   color: #666;
@@ -280,23 +271,20 @@
   margin-top: 5px;
 }
 
-/* ==========================================================================
-   OTTIMIZZAZIONE PER SMARTPHONE E TABLET (RESPONSIVE)
-   ========================================================================== */
 @media (max-width: 850px) {
   .main-layout-container {
-    flex-direction: column; /* Incolonna la scheda metadati sopra il testo */
+    flex-direction: column; 
     gap: 20px;
     margin: 15px auto;
   }
 
   .filter-sidebar {
-    flex: 1 1 100%; /* La colonna sinistra prende tutta la larghezza */
+    flex: 1 1 100%; 
     width: 100%;
   }
 
   .content-area {
-    padding: 25px; /* Riduce i margini interni della lettera sui piccoli schermi */
+    padding: 25px; 
   }
 
   .letter-header h1 {
@@ -305,7 +293,7 @@
 
   .letter-text {
     font-size: 1.05rem;
-    text-align: left; /* Evita vistosi spazi vuoti con il testo giustificato su schermi stretti */
+    text-align: left; 
   }
   }
 
